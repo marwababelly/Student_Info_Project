@@ -4,7 +4,7 @@ import logoImage from '../assets/logo.png';
 
 const Logo = () => {
   return (
-    <Navbar.Brand href="#home">
+    <Navbar.Brand href="/Login">
         <img
           src={logoImage}
           width="40"

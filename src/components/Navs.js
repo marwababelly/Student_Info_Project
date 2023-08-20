@@ -5,12 +5,12 @@ import style from './Navs.module.css';
 const Navs = () => {
   return (
     <>
-        <Nav defaultActiveKey="/home" as="ul">
+        <Nav defaultActiveKey="/" as="ul">
             <Nav.Item as="li">
-                <Nav.Link href='/link-1' className={style.textNav}>Sign up</Nav.Link>
+                <Nav.Link href='/SignUp' className={style.textNav}>Sign up</Nav.Link>
             </Nav.Item>
             <Nav.Item as='li'>
-                <Nav.Link href='/link2' className={style.textNav}>login</Nav.Link>
+                <Nav.Link href='/Login' className={style.textNav}>login</Nav.Link>
             </Nav.Item>
         </Nav>
     </>

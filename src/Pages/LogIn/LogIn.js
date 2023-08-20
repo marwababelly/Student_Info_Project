@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Col, Button, Row, Container, Card, Form } from 'react-bootstrap';
 import style from './LogIn.module.css';
+import { Link } from 'react-router-dom';
 
 const simulateNetworkReguest = ()=> {
   return new Promise((resolve) => setTimeout(resolve, 2000));
@@ -36,14 +37,14 @@ const LogIn = () => {
                     <Form>
                       <Form.Group className="mb-3" controlId="Name" >
                         <Form.Label  className="text-center">UserName</Form.Label>
-                        <Form.Control type="text" className={style.formControl} placeholder="Enter username" />
+                        <Form.Control type="text" className={style.formControl} placeholder="Enter username" required/>
                       </Form.Group>
 
                       <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Label className="text-center">
                           Email address
                         </Form.Label>
-                        <Form.Control className={style.formControl} type="email" placeholder="Enter email" />
+                        <Form.Control className={style.formControl} type="email" placeholder="Enter email" required/>
                       </Form.Group>
 
                       <Form.Group
@@ -51,7 +52,7 @@ const LogIn = () => {
                         controlId="formBasicPassword"
                       >
                         <Form.Label>Password</Form.Label>
-                        <Form.Control className={style.formControl} type="password" placeholder="Password" />
+                        <Form.Control className={style.formControl} type="password" placeholder="Password" required/>
                       </Form.Group>
 
                       <Form.Group
@@ -67,9 +68,7 @@ const LogIn = () => {
                     <div className="mt-3">
                       <p className="mb-0  text-center">
                         Already have an account??{' '}
-                        <a href="{''}" className="text-primary fw-bold">
-                          Sign In
-                        </a>
+                        <Link to='/SignUp' className='text-primary fw-bold'>Sign Up</Link>
                       </p>
                     </div>
                   </div>

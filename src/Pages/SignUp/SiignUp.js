@@ -6,7 +6,7 @@ const SiignUp = () => {
   return (
     <div>
       <Container>
-        <Row className="vh-100 d-flex justify-content-center align-items-center">
+        <Row className="vh-100 d-flex justify-content-center align-items-center mt-86" style={{marginTop: "86px", marginBottom: "20px"}}>
           <Col md={8} lg={6} xs={12}>
             <Card className={style.cbd}>
               <Card.Body>
@@ -18,19 +18,24 @@ const SiignUp = () => {
                         <Form.Label className="text-center">
                           Full Name
                         </Form.Label>
-                        <Form.Control type="text" placeholder="Enter Full Name" className={style.formControl}/>
+                        <Form.Control type="text" placeholder="Enter Full Name" className={style.formControl} required/>
                       </Form.Group>
 
                       <Form.Group className="mb-3" controlId="Name" >
-                        <Form.Label  className="text-center">UserName</Form.Label>
-                        <Form.Control type="text" className={style.formControl} placeholder="Enter username" />
+                        <Form.Label  className="text-center">Username</Form.Label>
+                        <Form.Control type="text" className={style.formControl} placeholder="Enter username" required/>
+                      </Form.Group>
+
+                      <Form.Group className="mb-3" controlId="Name" >
+                        <Form.Label  className="text-center">Your University</Form.Label>
+                        <Form.Control type="text" className={style.formControl} placeholder="Enter your university" required/>
                       </Form.Group>
 
                       <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Label className="text-center">
                           Email address
                         </Form.Label>
-                        <Form.Control type="email" placeholder="Enter email" className={style.formControl}/>
+                        <Form.Control type="email" placeholder="Enter email" className={style.formControl} required/>
                       </Form.Group>
 
                       <Form.Group
@@ -38,14 +43,14 @@ const SiignUp = () => {
                         controlId="formBasicPassword"
                       >
                         <Form.Label>Password</Form.Label>
-                        <Form.Control type="password" placeholder="Password" className={style.formControl}/>
+                        <Form.Control type="password" placeholder="Password" className={style.formControl} required/>
                       </Form.Group>
                       <Form.Group
                         className="mb-3"
                         controlId="formBasicPassword"
                       >
                         <Form.Label>Confirm Password</Form.Label>
-                        <Form.Control type="password" placeholder="Confirm Password" className={style.formControl}/>
+                        <Form.Control type="password" placeholder="Confirm Password" className={style.formControl} required/>
                       </Form.Group>
 
                       <Form.Group 
