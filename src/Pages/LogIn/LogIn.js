@@ -1,26 +1,56 @@
-import React, { useEffect, useState } from 'react';
+import React, {  useRef, useState } from 'react';
+import axios from 'axios';
 import { Col, Button, Row, Container, Card, Form } from 'react-bootstrap';
 import style from './LogIn.module.css';
 import { Link } from 'react-router-dom';
 
-const simulateNetworkReguest = ()=> {
-  return new Promise((resolve) => setTimeout(resolve, 2000));
-};
 
 const LogIn = () => {
-  const [isLoading, setLoading] = useState(false);
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  useEffect(() => {
-    if(isLoading) {
-      simulateNetworkReguest().then(() => {
-        setLoading(false);
-      });
-    }
-  }, [isLoading]);
+  const usernameRef = useRef('');
+  const emailRef = useRef('');
+  const passwordRef = useRef('');
 
-  const handleClick = () => {
-    setLoading(true);
+  const usernameHandler = (event) => {
+    setUsername(event.target.value);
   };
+
+  const emailHandler = (event) => {
+    setEmail(event.target.value);
+  };
+
+  const passwordHandler = (event) => {
+    setPassword(event.target.value);
+  };
+
+
+const submitFormHandler = (event) => {
+  event.preventDefault();
+
+  const enteredUsername = usernameRef.current.value;
+  const enteredEmail = emailRef.current.value;
+  const enteredPassword = passwordRef.current.value;
+
+  const logInFormData = {
+    username: enteredUsername,
+    email: enteredEmail,
+    password: enteredPassword
+  }
+
+  axios.post('https://student-info-294ff-default-rtdb.firebaseio.com/logInUsers', logInFormData)
+  .then((response) => {
+    console.log('Data Sent Successfully!', response);
+    setUsername('');
+    setEmail('');
+    setPassword('');
+  })
+  .catch((error) => {
+    console.log('Error Sending Data!', error)
+  })
+};
 
   return (
     <div>
@@ -34,17 +64,31 @@ const LogIn = () => {
                     Login
                   </h2>
                   <div className="mb-3">
-                    <Form>
+                    <Form 
+                      onSubmit={submitFormHandler}>
                       <Form.Group className="mb-3" controlId="Name" >
                         <Form.Label  className="text-center">UserName</Form.Label>
-                        <Form.Control type="text" className={style.formControl} placeholder="Enter username" required/>
+                        <Form.Control type="text" 
+                        className={style.formControl} 
+                        placeholder="Enter username" 
+                        ref={usernameRef}
+                        value={username}
+                        onChange={usernameHandler}
+                        required/>
                       </Form.Group>
 
                       <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Label className="text-center">
                           Email address
                         </Form.Label>
-                        <Form.Control className={style.formControl} type="email" placeholder="Enter email" required/>
+                        <Form.Control 
+                        className={style.formControl} 
+                        type="email" 
+                        placeholder="Enter email" 
+                        ref={emailRef}
+                        value={email}
+                        onChange={emailHandler}
+                        required/>
                       </Form.Group>
 
                       <Form.Group
@@ -52,18 +96,25 @@ const LogIn = () => {
                         controlId="formBasicPassword"
                       >
                         <Form.Label>Password</Form.Label>
-                        <Form.Control className={style.formControl} type="password" placeholder="Password" required/>
+                        <Form.Control 
+                        className={style.formControl} 
+                        type="password" 
+                        placeholder="Password" 
+                        ref={passwordRef}
+                        value={password}
+                        onChange={passwordHandler}
+                        required/>
                       </Form.Group>
 
                       <Form.Group
                         className="mb-3"
                         controlId="formBasicCheckbox"></Form.Group>
                       <div className="d-grid">
-                        <Button  className={style.btn} type="submit" onClick={!isLoading ? handleClick : null }>
-                          {isLoading ? 'Loading...' : 'LogIn'}
+                        <Button  className={style.btn} 
+                        type="submit" 
+                        >LogIn
                         </Button>
                       </div>
-
                     </Form>
                     <div className="mt-3">
                       <p className="mb-0  text-center">
@@ -82,4 +133,6 @@ const LogIn = () => {
   )
 }
 
-export default LogIn
+export default LogIn;
+
+
