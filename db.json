@@ -1,0 +1,20 @@
+{
+  "signUpUsers": [
+      {
+      "fullname": "",
+      "username": "",
+      "university": "",
+      "email": "",
+      "password": "",
+      "comfirmPassword": "",
+      "yearStudy": ""
+  } 
+],
+  "logInUsers": [
+      {
+      "username": "marwababelly",
+      "email": "marwaababelly@gmail.com",
+      "password": "1234"
+  }
+]
+}

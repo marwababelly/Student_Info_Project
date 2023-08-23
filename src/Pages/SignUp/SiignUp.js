@@ -1,7 +1,8 @@
 import React, { useRef, useState } from 'react';
 import { Col, Button, Row, Container, Card, Form } from 'react-bootstrap';
 import style from './SignUp.module.css';
-import axios from './../../axiosInstance';
+// import axios from './../../axiosInstance';
+import axios from 'axios';
 
 // const baseURL = 'https://student-info-294ff-default-rtdb.firebaseio.com/';
 
@@ -71,7 +72,7 @@ const submitFormHandler = (event) => {
     yearStudy: enteredYearStudy
   }
 
-  axios.post(`signUpUsers`, SignUpFormData)
+  axios.post('http://localhost:3000/signUpUsers', SignUpFormData)
   .then((response) => {
     console.log('Data Sent Successfully!', response);
     setFullname('');
