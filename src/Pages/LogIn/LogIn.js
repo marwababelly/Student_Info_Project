@@ -1,8 +1,9 @@
 import React, {  useRef, useState } from 'react';
-import axios from '../../axiosInstance';
+// import axios from '../../axiosInstance';
 import { Col, Button, Row, Container, Card, Form } from 'react-bootstrap';
 import style from './LogIn.module.css';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 // const baseURL = 'https://student-info-294ff-default-rtdb.firebaseio.com/';
 
@@ -41,7 +42,7 @@ const submitFormHandler = (event) => {
     password: enteredPassword
   }
 
-  axios.post(`logInUsers`, logInFormData)
+  axios.post('http://localhost:3000/logInUsers', logInFormData)
   .then((response) => {
     console.log('Data Sent Successfully!', response);
     setUsername('');
