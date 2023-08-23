@@ -4,7 +4,7 @@ import style from './SignUp.module.css';
 // import axios from './../../axiosInstance';
 import axios from 'axios';
 
-// const baseURL = 'https://student-info-294ff-default-rtdb.firebaseio.com/';
+const baseURL = 'https://student-info-294ff-default-rtdb.firebaseio.com/';
 
 const SiignUp = () => {
 const [fullname, setFullname] = useState('');
@@ -72,7 +72,7 @@ const submitFormHandler = (event) => {
     yearStudy: enteredYearStudy
   }
 
-  axios.post('http://localhost:3000/signUpUsers', SignUpFormData)
+  axios.post(`${baseURL}signUpUsers`, SignUpFormData)
   .then((response) => {
     console.log('Data Sent Successfully!', response);
     setFullname('');
